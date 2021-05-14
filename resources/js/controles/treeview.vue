@@ -22,7 +22,6 @@ export default {
             // necesito poner objeto como referencia para los niveles
             Object.keys(listado).map((x) => {
                 if(!isNaN(x) && !isNaN(Object.keys(listado[x])[0])){ 
-                    console.log("Desechado",x,Object.keys(listado[x]));
                     return ;
                 };
                 if(Object.keys(listado[x]).length > 0)
@@ -46,7 +45,7 @@ export default {
         {
             var level = {};
             level.nivel = 1;
-            console.log("informacion oficial", this.data);
+            this.body=[];
             this.createControl(this.data,this.body,level);
             let html = this.body.toString().replace(/,/g,"");
             var result = Metro.template(html,{});

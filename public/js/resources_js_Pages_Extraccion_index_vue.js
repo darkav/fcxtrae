@@ -87,33 +87,22 @@ __webpack_require__.r(__webpack_exports__);
     transformar: function transformar(registro, modo) {
       var record = {};
       record.id = registro.id;
-      record.ruc = registro.ruc;
-      record.razon_social = registro.razon_social;
+      record.compania_id = registro.compania_id;
+      record.tipodoc_id = registro.tipodoc_id;
+      record.nombre = registro.nombre;
 
       if (modo == "STORE") {
-        record.smtp = JSON.stringify({
-          smtpServer: registro.smtpServer,
-          smtpPuerto: registro.smtpPuerto,
-          smtpUsuario: registro.smtpUsuario,
-          smtpClave: registro.smtpClave
-        });
-        record.config = JSON.stringify({
-          dirExtraccion: registro.dirExtraccion,
-          dirLeido: registro.dirLeido,
-          sepLinea: registro.sepLinea,
-          sepColumna: registro.sepColumna
+        record.documento = JSON.stringify({
+          cabecera: registro.cabecera,
+          detalle: registro.detalle,
+          impuesto: registro.impuesto,
+          adicional: registro.adicional
         });
       } else {
-        var _smtp = JSON.parse(registro.smtp);
+        var _doc = JSON.parse(registro.documento);
 
-        var _config = JSON.parse(registro.config);
-
-        if (_smtp != null) {
-          record.smtpServer = _smtp.smtpServer, record.smtpPuerto = _smtp.smtpPuerto, record.smtpUsuario = _smtp.smtpUsuario, record.smtpClave = _smtp.smtpClave;
-        }
-
-        if (_config != null) {
-          record.dirExtraccion = _config.dirExtraccion, record.dirLeido = _config.dirLeido, record.sepLinea = _config.sepLinea, record.sepColumna = _config.sepColumna;
+        if (_doc != null) {
+          record.cabecera = _doc.cabecera, record.detalle = _doc.detalle, record.impuesto = _doc.impuesto, record.adicional = _doc.adicional;
         }
       }
 
@@ -310,7 +299,6 @@ __webpack_require__.r(__webpack_exports__);
 
       Object.keys(listado).map(function (x) {
         if (!isNaN(x) && !isNaN(Object.keys(listado[x])[0])) {
-          console.log("Desechado", x, Object.keys(listado[x]));
           return;
         }
 
@@ -334,7 +322,7 @@ __webpack_require__.r(__webpack_exports__);
     exec: function exec() {
       var level = {};
       level.nivel = 1;
-      console.log("informacion oficial", this.data);
+      this.body = [];
       this.createControl(this.data, this.body, level);
       var html = this.body.toString().replace(/,/g, "");
       var result = Metro.template(html, {});
