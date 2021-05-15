@@ -93,10 +93,10 @@ __webpack_require__.r(__webpack_exports__);
 
       if (modo == "STORE") {
         record.documento = JSON.stringify({
-          cabecera: registro.cabecera,
-          detalle: registro.detalle,
-          impuesto: registro.impuesto,
-          adicional: registro.adicional
+          cabecera: $("#form_cabecera").val(),
+          detalle: $("#form_detalle").val(),
+          impuesto: $("#form_impuesto").val(),
+          adicional: $("#form_adicional").val()
         });
       } else {
         var _doc = JSON.parse(registro.documento);
@@ -107,6 +107,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       record.estado = registro.estado || 'ACT';
+      console.log("Grabando informacion del record en store", record, registro);
       return record;
     },
     showCharm: function showCharm(flag) {
@@ -535,6 +536,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return $options.showCharm(true);
         })
       }, "Ver Esquema")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "form_cabecera",
         type: "text",
         "data-role": "tag-input",
         "onUpdate:modelValue": function onUpdateModelValue($event) {
@@ -544,6 +546,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8
       /* PROPS */
       , ["onUpdate:modelValue"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, parent.form.cabecera]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "form_detalle",
         type: "text",
         "data-role": "tag-input",
         "onUpdate:modelValue": function onUpdateModelValue($event) {
@@ -553,6 +556,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8
       /* PROPS */
       , ["onUpdate:modelValue"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, parent.form.detalle]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "form_impuesto",
         type: "text",
         "data-role": "tag-input",
         "onUpdate:modelValue": function onUpdateModelValue($event) {
@@ -562,6 +566,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8
       /* PROPS */
       , ["onUpdate:modelValue"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, parent.form.impuesto]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "form_adicional",
         type: "text",
         "data-role": "tag-input",
         "onUpdate:modelValue": function onUpdateModelValue($event) {

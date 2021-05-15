@@ -56,28 +56,28 @@
                 <div class="row">
                     <label class="cell-12">Cabecera</label>
                     <div class="cell-12">
-                        <input type="text" data-role="tag-input" v-model="parent.form.cabecera" class="metro-input" >
+                        <input id="form_cabecera" type="text" data-role="tag-input" v-model="parent.form.cabecera" class="metro-input" >
                     </div>
                 </div>
 
                 <div class="row">
                     <label class="cell-12">Detalle</label>
                     <div class="cell-12">
-                        <input type="text" data-role="tag-input" v-model="parent.form.detalle" class="metro-input" >
+                        <input id="form_detalle" type="text" data-role="tag-input" v-model="parent.form.detalle" class="metro-input" >
                     </div>
                 </div>
 
                 <div class="row">
                     <label class="cell-12">Impuestos</label>
                     <div class="cell-12">
-                        <input type="text" data-role="tag-input" v-model="parent.form.impuesto" class="metro-input" >
+                        <input id="form_impuesto" type="text" data-role="tag-input" v-model="parent.form.impuesto" class="metro-input" >
                     </div>
                 </div>
 
                 <div class="row">
                     <label class="cell-12">Adicionales</label>
                     <div class="cell-12">
-                        <input type="text" data-role="tag-input" v-model="parent.form.adicional" class="metro-input" >
+                        <input id="form_adicional" type="text" data-role="tag-input" v-model="parent.form.adicional" class="metro-input" >
                     </div>
                 </div>
 
@@ -170,10 +170,10 @@ export default {
             if(modo == "STORE")
             {
                 record.documento = JSON.stringify( {
-                    cabecera : registro.cabecera,
-                    detalle : registro.detalle,
-                    impuesto : registro.impuesto,
-                    adicional : registro.adicional
+                    cabecera : $("#form_cabecera").val(),
+                    detalle : $("#form_detalle").val(),
+                    impuesto : $("#form_impuesto").val(),
+                    adicional : $("#form_adicional").val()
                 });
             }else
             {
@@ -187,6 +187,7 @@ export default {
                 }
             }
             record.estado = registro.estado || 'ACT';
+            console.log("Grabando informacion del record en store",record,registro);
             return record;
         },
 
